@@ -1,0 +1,22 @@
+{
+  "name": "node-spring",
+  "version": "0.0.1",
+  "description": "Inspired by spring boot java. ",
+  "main": "index.ts",
+  "author": {
+    "name": "Upendra Dhakal",
+    "email": "dhakal.upenn@gmail.com"
+  },
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "@types/node": "^15.12.2",
+    "express": "^4.17.1",
+    "reflect-metadata": "^0.1.13",
+    "typescript": "^4.3.2"
+  },
+  "scripts": {
+    "start": "ts-node index.ts",
+    "start:example": "ts-node examples/ExampleApplication.ts"
+  }
+}
