@@ -1,22 +1,12 @@
 {
-  "name": "node-spring",
-  "version": "0.0.1",
-  "description": "Inspired by spring boot java. ",
-  "main": "index.ts",
-  "author": {
-    "name": "Upendra Dhakal",
-    "email": "dhakal.upenn@gmail.com"
-  },
+  "repository": "https://github.com/dhakalu/node-spring.git",
+  "author": "Upen <upen.dhakal@changehealthcare.com>",
   "license": "MIT",
-  "private": false,
-  "dependencies": {
-    "@types/node": "^15.12.2",
-    "express": "^4.17.1",
-    "reflect-metadata": "^0.1.13",
-    "typescript": "^4.3.2"
-  },
+  "private": true,
+  "workspaces": [
+    "packages/**"
+  ],
   "scripts": {
-    "start": "ts-node index.ts",
-    "start:example": "ts-node examples/ExampleApplication.ts"
+    "start:example": ""
   }
 }
