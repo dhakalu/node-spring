@@ -1,0 +1,12 @@
+{
+  "name": "@node-spring/examples",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "ts-node ExampleApplication.ts"
+  },
+  "dependencies": {
+    "@node-spring/core": "0.0.1"
+  }
+}

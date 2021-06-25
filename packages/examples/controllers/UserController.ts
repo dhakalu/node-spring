@@ -1,8 +1,12 @@
-import Component from "../../src/Component";
-import InternalServerError from "../../src/errors/InternalServerError";
-import GetRequest from "../../src/GetRequest";
-import RequestParam from "../../src/RequestParam";
-import RestController from "../../src/RestController";
+import Core from '@node-spring/core';
+
+const {
+    Component,
+    InternalServerError,
+    GetRequest,
+    RequestParam,
+    RestController,
+} = Core;
 
 @RestController('/users')
 @Component({}) //todo make restcontroller automatically be component
