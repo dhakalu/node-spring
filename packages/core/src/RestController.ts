@@ -10,17 +10,22 @@ export function RestController(path: string): Function {
                 target,
             );      
       const newRoute = express.Router();
-      existingRoutes.forEach(({ method, path, command}) => {          
+      existingRoutes.forEach(({ method, path, command, params = []}) => {     
+          console.log('registering new route', { method, path, command, params })  
           switch(method) {
               case 'GET': {
-                console.log('registering new route', { method, path, command })  
                 newRoute.get(path, (req: any, res: { json: (arg0: any) => void; status: (arg0: number) => { (): any; new(): any; json: { (arg0: { name: string, message: any; stack: any; }): void; new(): any; }; }; }, next: any) => {
                     // todo right now this assumes that the method returns 
                     // json. we should update it to conditionally send response beased on the return type
                     const functionToCall = Reflect.get(target, command);
                     try {
                         // todo add parser to send body/requestparams/query params individually on the basis of need instead of sending the whole request object
-                        const response = functionToCall(req);
+                        const argsToPass = new Array(params.length);
+                        for (const param of params) {
+                            const {paramterIndex, parameterName} = param;
+                            argsToPass[paramterIndex] = req.params[parameterName]
+                        }
+                        const response = functionToCall(...argsToPass);
                         res.json(response);
                     } catch(error) {
                         
@@ -35,7 +40,8 @@ export function RestController(path: string): Function {
                 break;
               }
               default: {
-                  throw Error(`${method} is not supported just yet!`);
+                  console.error('Methid is not supported just yet!')
+                //   throw Error(`${method} is not supported just yet!`);
               }
           }
       });

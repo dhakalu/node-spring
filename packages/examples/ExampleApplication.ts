@@ -7,7 +7,6 @@ const {
   InjectArgument
 } = Core;
 
-console.log(InjectArgument);
 
 @ExpressApplication()
 class Application  {

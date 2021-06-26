@@ -32,9 +32,10 @@ class UserController {
 
      @GetRequest('/:userId')
     static getUser(@RequestParam('userId') userId: string) {
-        // console.log('Request parameter recieved is ', userId);
+        console.log('Request parameter recieved is ', userId);
         return {
                     name: 'upen dhakal',
+                    userId,
                     email: 'dhakal.upenn@gmail.com',
         }
     }
