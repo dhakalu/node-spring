@@ -4,6 +4,7 @@ const {
     Component,
     InternalServerError,
     GetRequest,
+    PostRequest,
     RequestParam,
     RestController,
 } = Core;
@@ -19,8 +20,21 @@ type User = {
 @Component({}) //todo make restcontroller automatically be component
 class UserController {
 
-     @GetRequest("/")
+    @GetRequest("/")
     static getUsers(): { users: [User]}  {
+        return {
+            users: [
+                {
+                    name: "upen dhakal",
+                    userId: "dummyuser",
+                    email: "dhakal.upenn@gmail.com",
+                }
+            ]
+        };
+    }
+
+     @PostRequest("/")
+    static getUsersWithFilter(): { users: [User]}  {
         return {
             users: [
                 {

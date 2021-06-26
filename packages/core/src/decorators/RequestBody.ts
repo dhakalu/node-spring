@@ -1,7 +1,7 @@
 import { ROUTES_METADATA_KEY } from "./Request";
 
 
-const RequestParam = (parameterName?: string) : (target: any, methodName: string, paramterIndex: number) => void => {
+const RequestBody = (parameterName?: string) : (target: any, methodName: string, paramterIndex: number) => void => {
     return function(target: any, methodName: string, paramterIndex: number) {
         const existingRoutes =  Reflect.getMetadata(
             ROUTES_METADATA_KEY,
@@ -12,27 +12,26 @@ const RequestParam = (parameterName?: string) : (target: any, methodName: string
         
         const indexOfThisRoute = existingRoutes.findIndex(({ command }) => command === methodName);
         if (indexOfThisRoute > 0) {
-            // if a method has multiple request params or query params
+            // if a method has been already registered.
             const thisRoute =  newRoutes[indexOfThisRoute];
             newRoutes[indexOfThisRoute] = {
                 ...thisRoute,
-                params: [
-                    ...thisRoute.params,
-                    {
-                        parameterName,
-                        paramterIndex,
-                    }
-                ],
+                body: {
+                    paramterIndex,
+                    parameterName,
+                }
             };
         } else {
             newRoutes = [...existingRoutes, {
-                params: [{
-                    parameterName,
+                body: {
                     paramterIndex,
-                }],
+                    parameterName,
+                },
                 command: methodName,
             }];
         }
+        
+
         Reflect.defineMetadata(
             ROUTES_METADATA_KEY,
             newRoutes,
@@ -41,4 +40,4 @@ const RequestParam = (parameterName?: string) : (target: any, methodName: string
     };
 };
 
-export default RequestParam;
+export default RequestBody;
