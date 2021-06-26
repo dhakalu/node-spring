@@ -1,20 +1,20 @@
 import Core from "@node-spring/core";
-import UserController from './controllers/UserController';
-import 'reflect-metadata';
+import UserController from "./controllers/UserController";
+import "reflect-metadata";
 
 const {
-  ExpressApplication,
-  InjectArgument
+    ExpressApplication,
+    InjectArgument
 } = Core;
 
 
 @ExpressApplication()
 class Application  {
 
-    @InjectArgument('NodeSpringApplication') nodeSpringApplication: any;
+    @InjectArgument("NodeSpringApplication") nodeSpringApplication: any;
 
     // todo scan all the controllers automatically so we dont need to inject it manually
-    @InjectArgument('UserController') userController: UserController;
+    @InjectArgument("UserController") userController: UserController;
 
     constructor(){
         // this.nodeSpringApplication.init();
@@ -22,5 +22,7 @@ class Application  {
     }
 
 }
+
+export default Application;
 
 

@@ -2,11 +2,7 @@
     "compilerOptions": {
         "target": "es2017",
         "experimentalDecorators": true,
-        "emitDecoratorMetadata": true
+        "emitDecoratorMetadata": true,
+        "moduleResolution": "node",
     },
-    "references": [
-        {
-            "path": "../core"
-        }
-    ]
 }
