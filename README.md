@@ -13,7 +13,7 @@ Features provided:
 
 ### Creating an application
 
-```js
+```ts
 import Core from "@node-spring/core";
 import UserController from "./controllers/UserController";
 import "reflect-metadata";
@@ -37,7 +37,7 @@ class Application {
 
 Routes can reginstered using `@RestController` class decorator. The methods inside of this controller can be decorated using method decorators. For example `@GetRequest` would create a get request. Request object can be extracted using `@RequestParams`, `@QueryParams` decorators. Complete example of a controller is shown below:
 
-```js
+```ts
 import Core from "@node-spring/core";
 
 const {
@@ -63,13 +63,25 @@ class UserController {
     };
   }
 
-  @GetRequest("/error")
-  static throwError() {
-    const error = new InternalServerError("Some unexpected error occured");
-    throw error;
+  @PostRequest("/")
+  static createNewUser(@RequestBody() createUserRequestBody) {
+    return createUserRequestBody;
   }
+}
 
-  @GetRequest("/:userId")
+export default UserController;
+```
+
+#### Extracting Path Parameters
+
+`@RequestParam` decorator can be used to extract path parameter from the request. Make sure the path has `:<some-path-key>` to be able to use this decorator.
+
+For example for a route defined as `@GetRequest("/users/:userId")`, if user makes request to `/users/1234` and the method has an argument `@RequestParam("userId") userId`, the variable userId will have value of 1234.
+
+Full example of a rquest extracting path parameter is:
+
+```ts
+ @GetRequest("/:userId")
   static getUser(@RequestParam("userId") userId: string) {
     console.log("Request parameter recieved is ", userId);
     return {
@@ -78,7 +90,5 @@ class UserController {
       email: "dhakal.upenn@gmail.com",
     };
   }
-}
 
-export default UserController;
 ```
