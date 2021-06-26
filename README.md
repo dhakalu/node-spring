@@ -92,3 +92,28 @@ Full example of a rquest extracting path parameter is:
   }
 
 ```
+
+#### Extracting Query Parameters
+
+Similar to Path Parameters, query parameters can be extracted with `@QueryParam` decorator as shown below:
+
+```ts
+    @GetRequest("/:userId")
+    static getUser(@RequestParam("userId") userId: string, @QueryParam("postId") postId: string): User {
+        console.log("Request parameter recieved is ", userId);
+        console.log("Query parameter recieved is ", postId);
+        return {
+            name: "upen dhakal",
+            userId,
+            postId,
+            email: "dhakal.upenn@gmail.com",
+        };
+    }
+```
+
+making a get request to `users/1234?postId=abcd` would produce follwing in console:
+
+```js
+  Request parameter recieved is 1234
+  Query parameter recieved is abcd
+```
