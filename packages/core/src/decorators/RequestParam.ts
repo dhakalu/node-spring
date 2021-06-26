@@ -7,19 +7,33 @@ const RequestParam = (parameterName?: string) : (target: any, methodName: string
             ROUTES_METADATA_KEY,
             target,
         ) || [];
+
+        let newRoutes = [...existingRoutes];
         
         const indexOfThisRoute = existingRoutes.findIndex(({ command }) => command === methodName);
-
         if (indexOfThisRoute > 0) {
-            // todo if already exists .. this should not be reached, I think
+            // if a method has multiple request params or query params
+            const thisRoute =  newRoutes[indexOfThisRoute];
+            newRoutes[indexOfThisRoute] = {
+                ...thisRoute,
+                params: [
+                    ...thisRoute.params,
+                    {
+                        parameterName,
+                        paramterIndex,
+                    }
+                ],
+            };
+        } else {
+            newRoutes = [...existingRoutes, {
+                params: [{
+                    parameterName,
+                    paramterIndex,
+                }],
+                command: methodName,
+            }];
         }
-        const newRoutes = [...existingRoutes, {
-            params: [{
-                parameterName,
-                paramterIndex,
-            }],
-            command: methodName,
-        }];
+        
 
         Reflect.defineMetadata(
             ROUTES_METADATA_KEY,
@@ -30,9 +44,6 @@ const RequestParam = (parameterName?: string) : (target: any, methodName: string
 
         console.log("Route " + methodName + " at " + indexOfThisRoute + " has " + parameterName + " param at index " +  paramterIndex);
         const functionBeforeModification = Reflect.get(target, methodName);
-        // const newFunction = () => {
-
-        // }
         console.log("request params are ", functionBeforeModification.args);
     };
 };

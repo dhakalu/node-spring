@@ -12,6 +12,7 @@ type User = {
     name: string,
     email: string,
     userId: string,
+    postId?:string
 }
 
 @RestController("/users")
@@ -37,12 +38,13 @@ class UserController {
          throw error;
      }
 
-     @GetRequest("/:userId")
-    static getUser(@RequestParam("userId") userId: string): User {
+     @GetRequest("/:userId/posts/:postId")
+    static getUser(@RequestParam("userId") userId: string, @RequestParam("postId") postId: string): User {
         console.log("Request parameter recieved is ", userId);
         return {
             name: "upen dhakal",
             userId,
+            postId,
             email: "dhakal.upenn@gmail.com",
         };
     }
