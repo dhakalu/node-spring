@@ -9,8 +9,8 @@ export function RestController(path: string): (target: { new () }) => void {
             target,
         );      
         const newRoute = express.Router();
-        existingRoutes.forEach(({ method, path, command, params = []}) => {     
-            console.log("registering new route", { method, path, command, params });  
+        existingRoutes.forEach(({ method, path, command, params = [], extractBody}) => {     
+            console.log("registering new route", { method, path, command, params, extractBody });  
             switch(method) {
             case "GET": {
                 newRoute.get(path, (req: express.Request, res: express.Response) => {
@@ -21,8 +21,8 @@ export function RestController(path: string): (target: { new () }) => void {
                         // todo add parser to send body/requestparams/query params individually on the basis of need instead of sending the whole request object
                         const argsToPass = new Array(params.length);
                         for (const param of params) {
-                            const {paramterIndex, parameterName} = param;
-                            argsToPass[paramterIndex] = req.params[parameterName];
+                            const {parameterIndex, parameterName} = param;
+                            argsToPass[parameterIndex] = req.params[parameterName];
                         }
                         const response = functionToCall(...argsToPass);
                         res.json(response);
@@ -44,11 +44,21 @@ export function RestController(path: string): (target: { new () }) => void {
                     const functionToCall = Reflect.get(target, command);
                     try {
                         // todo add parser to send body/requestparams/query params individually on the basis of need instead of sending the whole request object
-                        const argsToPass = new Array(params.length);
-                        for (const param of params) {
-                            const {paramterIndex, parameterName} = param;
-                            argsToPass[paramterIndex] = req.params[parameterName];
+                        
+                        let numberOfArgs = params.length;
+                        if (extractBody) {
+                            numberOfArgs += 1;
                         }
+                        const argsToPass = new Array(numberOfArgs);
+                        for (const param of params) {
+                            const {parameterIndex, parameterName} = param;
+                            argsToPass[parameterIndex] = req.params[parameterName];
+                        }
+
+                        if (extractBody) {
+                            argsToPass[extractBody.parameterIndex] = req.body;
+                        }
+                        console.log("args to pass", argsToPass);
                         const response = functionToCall(...argsToPass);
                         res.json(response);
                     } catch(error) {

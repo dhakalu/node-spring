@@ -7,6 +7,7 @@ const {
     PostRequest,
     RequestParam,
     RestController,
+    RequestBody,
 } = Core;
 
 type User = {
@@ -34,7 +35,8 @@ class UserController {
     }
 
      @PostRequest("/")
-    static getUsersWithFilter(): { users: [User]}  {
+    static getUsersWithFilter(@RequestBody() parsedBody: object): { users: [User]}  {
+        console.log(parsedBody)
         return {
             users: [
                 {

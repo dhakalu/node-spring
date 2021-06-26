@@ -6,6 +6,7 @@ import InternalServerError from "./errors/InternalServerError";
 import GetRequest from "./decorators/GetRequest";
 import PostRequest from "./decorators/PostRequest";
 import RequestParam from "./decorators/RequestParam";
+import RequestBody from "./decorators/RequestBody";
 import RestController from "./decorators/RestController";
 
 //todo export from different sub modules
@@ -18,5 +19,6 @@ export default {
     GetRequest,
     PostRequest,
     RequestParam,
+    RequestBody,
     RestController,
 };

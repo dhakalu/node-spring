@@ -1,8 +1,8 @@
 import { ROUTES_METADATA_KEY } from "./Request";
 
 
-const RequestBody = (parameterName?: string) : (target: any, methodName: string, paramterIndex: number) => void => {
-    return function(target: any, methodName: string, paramterIndex: number) {
+const RequestBody = () : (target: any, methodName: string, paramterIndex: number) => void => {
+    return function(target: any, methodName: string, parameterIndex: number) {
         const existingRoutes =  Reflect.getMetadata(
             ROUTES_METADATA_KEY,
             target,
@@ -16,21 +16,20 @@ const RequestBody = (parameterName?: string) : (target: any, methodName: string,
             const thisRoute =  newRoutes[indexOfThisRoute];
             newRoutes[indexOfThisRoute] = {
                 ...thisRoute,
-                body: {
-                    paramterIndex,
-                    parameterName,
+                extractBody: {
+                    parameterIndex,
                 }
             };
         } else {
             newRoutes = [...existingRoutes, {
-                body: {
-                    paramterIndex,
-                    parameterName,
+                extractBody: {
+                    parameterIndex,
                 },
                 command: methodName,
             }];
         }
         
+        console.log('New Routes are ', newRoutes);
 
         Reflect.defineMetadata(
             ROUTES_METADATA_KEY,

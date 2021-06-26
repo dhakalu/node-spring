@@ -2,11 +2,14 @@ import Component from "./decorators/Component";
 import { container } from "./Container";
 import * as express from "express";
 
+// parse application/json
+
 @Component({prototype: false})
 class NodeSpringApplication {
     constructor() {
         //todo initialize the express and listen to certain port
         const app = express();
+        app.use(express.json());
         container.addComponent("app", app);
         console.log("Created an application");
     }
