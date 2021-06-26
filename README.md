@@ -8,3 +8,77 @@ Features provided:
 
 - Annotation based components creation (e.g `@RestController('/users')` )
 - Dependency Injection (e.g. `@InjectArgument('beanName') someBean: TypeOfBean;`)
+
+## Usage
+
+### Creating an application
+
+```js
+import Core from "@node-spring/core";
+import UserController from "./controllers/UserController";
+import "reflect-metadata";
+
+const { ExpressApplication, InjectArgument } = Core;
+
+@ExpressApplication()
+class Application {
+  @InjectArgument("NodeSpringApplication") nodeSpringApplication: any;
+
+  // register all the controllers of our application
+  @InjectArgument("UserController") userController: UserController;
+
+  constructor() {
+    this.nodeSpringApplication.run();
+  }
+}
+```
+
+### Defining New Routes
+
+Routes can reginstered using `@RestController` class decorator. The methods inside of this controller can be decorated using method decorators. For example `@GetRequest` would create a get request. Request object can be extracted using `@RequestParams`, `@QueryParams` decorators. Complete example of a controller is shown below:
+
+```js
+import Core from "@node-spring/core";
+
+const {
+  Component,
+  InternalServerError,
+  GetRequest,
+  RequestParam,
+  RestController,
+} = Core;
+
+@RestController("/users")
+@Component({}) //todo make restcontroller automatically be component
+class UserController {
+  @GetRequest("/")
+  static getUsers(req) {
+    return {
+      users: [
+        {
+          name: "upen dhakal",
+          email: "dhakal.upenn@gmail.com",
+        },
+      ],
+    };
+  }
+
+  @GetRequest("/error")
+  static throwError() {
+    const error = new InternalServerError("Some unexpected error occured");
+    throw error;
+  }
+
+  @GetRequest("/:userId")
+  static getUser(@RequestParam("userId") userId: string) {
+    console.log("Request parameter recieved is ", userId);
+    return {
+      name: "upen dhakal",
+      userId,
+      email: "dhakal.upenn@gmail.com",
+    };
+  }
+}
+
+export default UserController;
+```
