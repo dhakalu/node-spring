@@ -1,9 +1,9 @@
-import NetworkError from './NetworkError';
+import NetworkError from "./NetworkError";
 
 class InternalServerError extends NetworkError {
 
-     constructor(message){
-        super(message, 'InternalServerError');
+    constructor(message: string){
+        super(message, "InternalServerError");
         this.message= message;
         // this.name = name;
         this.status = 500;

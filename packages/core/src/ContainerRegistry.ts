@@ -4,11 +4,13 @@ class ContainerRegistry {
 
     routesToRegister: [];
 
-    register(){
-
+    register = (): void => {
+        console.log("Register is not implemeneted just yet!");
     }
 
-    resolve(){
-
+    resolve = (): void => {
+        console.log("Resolve is not implemeneted just yet!");
     }
 }
+
+export default ContainerRegistry;

@@ -1,8 +1,8 @@
 
-export function ExpressApplication(): Function {
-  return function(target: { new () }): void {
-      new target();
-  };
+export function ExpressApplication() {
+    return function(target: { new () }): void {
+        new target();
+    };
 }
 
 export default ExpressApplication;

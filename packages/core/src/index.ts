@@ -1,6 +1,6 @@
-import NodeExpressApplication from './NodeSpringApplication';
-import ExpressApplication from './ExpressApplication';
-import InjectArgument from './InjectArgument';
+import NodeExpressApplication from "./NodeSpringApplication";
+import ExpressApplication from "./ExpressApplication";
+import InjectArgument from "./InjectArgument";
 import Component from "./Component";
 import InternalServerError from "./errors/InternalServerError";
 import GetRequest from "./GetRequest";
@@ -17,4 +17,4 @@ export default {
     GetRequest,
     RequestParam,
     RestController,
-}
+};

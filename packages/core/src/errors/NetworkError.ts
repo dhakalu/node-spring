@@ -2,7 +2,7 @@ class NetworkError extends Error {
 
     status: number;
     
-    constructor(message, name){
+    constructor(message: string, name: string){
         super();
         this.message= message;
         this.name = name;

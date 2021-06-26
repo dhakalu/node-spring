@@ -1,4 +1,4 @@
-import IPropertyResolver from './IPropertyResolver';
+import IPropertyResolver from "./IPropertyResolver";
 
 /**
  * Interface that defines the environment in which the application is running.

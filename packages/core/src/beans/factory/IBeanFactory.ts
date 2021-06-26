@@ -13,7 +13,7 @@ interface IBeanFactory {
      * A bean is usually identified by its name. But it can also conatin some aliases that can identify the bean.
      * @param beanName Name of the bean by which the bean is identififed.
      */
-    getAliases(beanName: string): String[]
+    getAliases(beanName: string): string[]
 
     /**
      * Returns an instance of the specified bean
@@ -21,6 +21,7 @@ interface IBeanFactory {
      * @param beanName Name of the bean by which the bean is identified. Returned bean could be a shared bean (singleton) or 
      * indendent.
      */
+    /* eslint-disable  @typescript-eslint/no-explicit-any */
     getBean(beanName: string) : any;
 
     /**
