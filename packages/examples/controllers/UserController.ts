@@ -8,6 +8,7 @@ const {
     RequestParam,
     RestController,
     RequestBody,
+    QueryParam,
 } = Core;
 
 type User = {
@@ -54,8 +55,8 @@ class UserController {
          throw error;
      }
 
-     @GetRequest("/:userId/posts/:postId")
-    static getUser(@RequestParam("userId") userId: string, @RequestParam("postId") postId: string): User {
+     @GetRequest("/:userId")
+    static getUser(@RequestParam("userId") userId: string, @QueryParam("postId") postId: string): User {
         console.log("Request parameter recieved is ", userId);
         return {
             name: "upen dhakal",

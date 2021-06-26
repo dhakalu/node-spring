@@ -6,6 +6,7 @@ import InternalServerError from "./errors/InternalServerError";
 import GetRequest from "./decorators/GetRequest";
 import PostRequest from "./decorators/PostRequest";
 import RequestParam from "./decorators/RequestParam";
+import QueryParam from "./decorators/QueryParam";
 import RequestBody from "./decorators/RequestBody";
 import RestController from "./decorators/RestController";
 
@@ -21,4 +22,5 @@ export default {
     RequestParam,
     RequestBody,
     RestController,
+    QueryParam,
 };
