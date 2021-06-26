@@ -1,4 +1,4 @@
-import Component from "./Component";
+import Component from "./decorators/Component";
 import { container } from "./Container";
 import * as express from "express";
 

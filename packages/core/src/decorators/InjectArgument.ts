@@ -1,9 +1,9 @@
 
 
-import { container } from "./Container";
+import { container } from "../Container";
 
-const InjectArgument = (token: string): (target: never, key: string) => void =>  {
-    return function(target: never, key: string) {
+const InjectArgument = (token: string): (target: any, key: string) => void =>  {
+    return function(target: any, key: string) {
         const objectToInject =  container.getBean(token);
         Object.defineProperty(target, key, {
             get: () => objectToInject,

@@ -1,5 +1,5 @@
 import * as express from "express";
-import { container } from "./Container";
+import { container } from "../Container";
 import { ROUTES_METADATA_KEY } from "./GetRequest";
 
 export function RestController(path: string): (target: { new () }) => void {

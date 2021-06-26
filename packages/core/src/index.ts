@@ -1,11 +1,11 @@
 import NodeExpressApplication from "./NodeSpringApplication";
-import ExpressApplication from "./ExpressApplication";
-import InjectArgument from "./InjectArgument";
-import Component from "./Component";
+import ExpressApplication from "./decorators/ExpressApplication";
+import InjectArgument from "./decorators/InjectArgument";
+import Component from "./decorators/Component";
 import InternalServerError from "./errors/InternalServerError";
-import GetRequest from "./GetRequest";
-import RequestParam from "./RequestParam";
-import RestController from "./RestController";
+import GetRequest from "./decorators/GetRequest";
+import RequestParam from "./decorators/RequestParam";
+import RestController from "./decorators/RestController";
 
 //todo export from different sub modules
 export default {
