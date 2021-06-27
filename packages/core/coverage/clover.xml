@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1624790622274" clover="3.2.0">
+  <project timestamp="1624790622274" name="All files">
+    <metrics statements="15" coveredstatements="15" conditionals="15" coveredconditionals="14" methods="3" coveredmethods="3" elements="33" coveredelements="32" complexity="0" loc="15" ncloc="15" packages="1" files="1" classes="1"/>
+    <file name="Request.ts" path="/Users/udhakal/libraries/node-spring/packages/core/src/decorators/Request.ts">
+      <metrics statements="15" coveredstatements="15" conditionals="15" coveredconditionals="14" methods="3" coveredmethods="3"/>
+      <line num="4" count="1" type="stmt"/>
+      <line num="12" count="1" type="cond" truecount="0" falsecount="1"/>
+      <line num="13" count="5" type="stmt"/>
+      <line num="14" count="6" type="cond" truecount="8" falsecount="0"/>
+      <line num="15" count="6" type="cond" truecount="2" falsecount="0"/>
+      <line num="16" count="1" type="stmt"/>
+      <line num="19" count="5" type="cond" truecount="2" falsecount="0"/>
+      <line num="26" count="5" type="stmt"/>
+      <line num="28" count="5" type="stmt"/>
+      <line num="30" count="5" type="cond" truecount="2" falsecount="0"/>
+      <line num="31" count="4" type="stmt"/>
+      <line num="32" count="4" type="stmt"/>
+      <line num="38" count="1" type="stmt"/>
+      <line num="44" count="5" type="stmt"/>
+      <line num="52" count="1" type="stmt"/>
+    </file>
+  </project>
+</coverage>

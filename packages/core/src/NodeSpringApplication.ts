@@ -1,6 +1,6 @@
 import Component from "./decorators/Component";
 import { container } from "./Container";
-import * as express from "express";
+import express from "express";
 
 // parse application/json
 

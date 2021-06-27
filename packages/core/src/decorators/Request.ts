@@ -22,11 +22,12 @@ export function Request({ method = "GET", path }: RequestOptions): (target: any,
         ) || [];
 
 
+
         const indexOfThisRoute = existingRoutes.findIndex(({ command }) => command === key);
 
         let newRoutes = [...existingRoutes];
 
-        if (indexOfThisRoute > 0) {
+        if (indexOfThisRoute > -1) {
             const thisRoute = newRoutes[indexOfThisRoute];
             newRoutes[indexOfThisRoute] = {
                 ...thisRoute,

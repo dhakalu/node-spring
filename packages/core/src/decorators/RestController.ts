@@ -61,7 +61,7 @@ export function RestController(path: string): (target: { new () }) => void {
         const existingRoutes =  Reflect.getMetadata(
             ROUTES_METADATA_KEY,
             target,
-        );      
+        ) || [];      
         const newRoute = express.Router();
         existingRoutes.forEach((routeDetail: RouteMetadata) => {     
             const { method, path, command } = routeDetail;
