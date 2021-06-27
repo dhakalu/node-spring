@@ -1,4 +1,4 @@
-# Siderite
+# Tentorium
 
 This is a javascript library that provides similar functionality of SpringBoot. Read more about SpringBoot [here](https://spring.io/projects/spring-boot#learn).
 

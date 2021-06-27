@@ -1,4 +1,4 @@
-import Core from "@node-spring/core";
+import Core from "@tentorium/core";
 import UserController from "./controllers/UserController";
 import "reflect-metadata";
 

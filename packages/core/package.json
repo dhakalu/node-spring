@@ -1,16 +1,16 @@
 {
   "name": "@tentorium/core",
-  "description": "Spring framework for NodeJS. Inspired by spring boot java. ",
-  "version": "0.0.2",
-  "main": "dist/index.js",
+  "description": "Create Restful APIs easily with decorative coding. Inspired by Spring-Boot",
+  "version": "0.0.4",
+  "main": "dist/index.ts",
   "types": "dist/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/dhakalu/node-spring.git"
+    "url": "https://github.com/dhakalu/tentorium.git"
   },
-  "homepage": "https://github.com/dhakalu/node-spring#readme",
+  "homepage": "https://github.com/dhakalu/tentorium#readme",
   "bugs": {
-    "url": "https://github.com/dhakalu/node-spring/issues"
+    "url": "https://github.com/dhakalu/tentorium/issues"
   },
   "author": {
     "name": "Upendra Dhakal",
@@ -30,13 +30,13 @@
   },
   "dependencies": {
     "express": "^4.17.1",
-    "reflect-metadata": "^0.1.13",
-    "typescript": "^4.3.2"
+    "reflect-metadata": "^0.1.13"
   },
   "devDependencies": {
     "@types/express": "^4.17.12",
     "@types/node": "^15.12.4",
-    "@types/reflect-metadata": "^0.1.0"
+    "@types/reflect-metadata": "^0.1.0",
+    "typescript": "^4.3.4"
   },
   "files": [
     "dist/**/*"

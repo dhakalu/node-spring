@@ -1,5 +1,5 @@
 {
-  "name": "@node-spring/examples",
+  "name": "@tentorium/examples",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
@@ -7,6 +7,6 @@
     "start": "ts-node ExampleApplication.ts"
   },
   "dependencies": {
-    "@node-spring/core": "0.0.1"
+    "@tentorium/core": "0.0.4"
   }
 }

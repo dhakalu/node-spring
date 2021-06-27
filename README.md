@@ -14,7 +14,7 @@ Features provided:
 ### Creating an application
 
 ```ts
-import Core from "@node-spring/core";
+import Core from "@tentorium/core";
 import UserController from "./controllers/UserController";
 import "reflect-metadata";
 
@@ -40,7 +40,7 @@ Routes can reginstered using `@RestController` class decorator. The methods insi
 Request object can be extracted using `@RequestParams`, `@QueryParams` decorators. Complete example of a controller is shown below:
 
 ```ts
-import Core from "@node-spring/core";
+import Core from "@tentorium/core";
 
 const {
   Component,
