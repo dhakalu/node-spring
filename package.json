@@ -1,5 +1,12 @@
 {
-  "repository": "https://github.com/dhakalu/node-spring.git",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dhakalu/node-spring.git"
+  },
+  "homepage": "https://github.com/dhakalu/node-spring#readme",
+  "bugs": {
+    "url": "https://github.com/dhakalu/node-spring/issues"
+  },
   "author": "Upen <upen.dhakal@changehealthcare.com>",
   "license": "MIT",
   "private": true,
