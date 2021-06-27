@@ -1,7 +1,7 @@
 {
-  "name": "@node-spring/core",
+  "name": "@tentorium/core",
   "description": "Spring framework for NodeJS. Inspired by spring boot java. ",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "repository": {
@@ -19,6 +19,7 @@
   "license": "MIT",
   "private": false,
   "scripts": {
+    "test": "echo psss",
     "build": "tsc",
     "lint": "eslint --ext .ts",
     "prepare": "npm run build",
