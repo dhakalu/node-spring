@@ -10,9 +10,13 @@ class Container implements IBeanFactory {
     constructor() {
         this.components = new Map();
     }
+
+    numberOfContainers() {
+        return this.components.size;
+    }
+
     containsBean(beanName: string): boolean {
-        console.log(beanName);
-        throw new Error("Method not implemented.");
+        return this.components.has(beanName);
     }
     getAliases(beanName: string): string[] {
         if (!this.components.has(beanName)) {
@@ -21,7 +25,7 @@ class Container implements IBeanFactory {
         return this.components.get(beanName);
     }
     getBean(beanName: string) {
-        if (!this.components.has(beanName)) {
+        if (!this.containsBean(beanName)) {
             throw new Error(`Component with the key ${beanName} does not exist.`);
         }
         return this.components.get(beanName);
@@ -31,12 +35,14 @@ class Container implements IBeanFactory {
         throw new Error("Method not implemented.");
     }
     isSingleton(beanName: string): boolean {
-        console.log(beanName);
-        throw new Error("Method not implemented.");
+        if (!this.containsBean(beanName)) {
+            throw new Error(`Component with the key ${beanName} does not exist.`);
+        }
+        return true;
     }
 
     addComponent(key: string, component: any) {
-        if (this.components.has(key)) {
+        if (this.containsBean(key)) {
             throw new Error(`Component with the key ${key} already exists.`);
         }
         this.components.set(key, component);

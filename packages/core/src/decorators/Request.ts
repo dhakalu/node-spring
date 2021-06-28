@@ -5,11 +5,11 @@ export const ROUTES_METADATA_KEY = "routes";
 
 
 type RequestOptions = {
-    method?: "GET" | "POST" | "PUT" | "DELETE",
+    method?: string, //todo make this type work "GET" | "POST" | "PUT" | "DELETE",
     path: string,
 }
 
-export function Request({ method = "GET", path }: RequestOptions): (target: any, key: string) => void {
+function Request({ method = "GET", path }: RequestOptions): (target: any, key: string) => void {
     return function(target: any, key: string): void {
         const routeName = target?.constructor?.name;
         if (!routeName) {
