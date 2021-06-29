@@ -6,9 +6,11 @@ import IBeanFactory from "./beans/factory/IBeanFactory";
 */
 class Container implements IBeanFactory {
     components: Map<string, any>;  
+    aliases: Map<string, string[]>;
 
     constructor() {
         this.components = new Map();
+        this.aliases = new Map();
     }
 
     numberOfContainers() {
@@ -22,7 +24,7 @@ class Container implements IBeanFactory {
         if (!this.components.has(beanName)) {
             throw new Error(`Component with the key ${beanName} does not exist.`);
         }
-        return this.components.get(beanName);
+        return this.aliases.get(beanName) || [];
     }
     getBean(beanName: string) {
         if (!this.containsBean(beanName)) {

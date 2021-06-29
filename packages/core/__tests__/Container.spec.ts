@@ -54,7 +54,28 @@ describe("Container", () => {
         test("By default added component should be singleton", () => {
             expect(container.isSingleton(configs.beanName)).toBeTruthy();
         });
+
+    });
+
+    describe("getAliases", () => {
         
+        test("It should throw error when trying to query aliases of bean that does not exist", () => {
+            const beanName = "noExist";
+            expect(() => container.getAliases(beanName)).toThrow(`Component with the key ${beanName} does not exist.`);
+        });
+        
+        test("It should return empty array when there are not aliases for a component", () => {
+            const aliases = container.getAliases(configs.beanName);
+            expect(aliases.length).toBe(0);
+        });
+    });
+
+    describe("isProptotype", () => {
+        
+        test("It should throw error saying its not implemeneted", () => {
+            const beanName = "noExist";
+            expect(() => container.isProptotype(beanName)).toThrow("Method not implemented.");
+        });
     });
 
 });
